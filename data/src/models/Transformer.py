@@ -16,4 +16,4 @@ while True:
         traduccion = español_ingles(text_translate)[0]('generated_text')
     
     elif idioma == "en":
-        traduccion = ingles_español(text_translate)[0]('generated_text') 
+        traduccion = ingles_español(text_translate)[0]('generated_text')  
