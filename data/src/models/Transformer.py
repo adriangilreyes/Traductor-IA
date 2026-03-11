@@ -1,19 +1,45 @@
-from transformers import pipeline
-from langdetect import detect
+from transformers import  MarianTokenizer, MarianMTModel 
+from langdetect import detect 
 
-español_ingles = pipeline("any-to-any",model='Helsinki-NLP/opus-mt-es-en') #ESPAÑOL - INGLÉS
-ingles_español = pipeline("any-to-any",model='Helsinki-Nlp/opus-mt-en-es') # INGLÉS - ESPAÑOL
+#ESPAÑOL - INGLÉS
+token_es_en = MarianTokenizer.from_pretrained('Helsinki-NLP/opus-mt-es-en')  
+model_es_en = MarianMTModel.from_pretrained('Helsinki-NLP/opus-mt-es-en')  
 
+#INGLÉS - ESPAÑOL
+token_en_es = MarianTokenizer.from_pretrained('Helsinki-NLP/opus-mt-en-es') 
+model_en_es = MarianMTModel.from_pretrained('Helsinki-NLP/opus-mt-en-es')  
+
+#ESPAÑOL - ALEMÁN
+token_es_de = MarianTokenizer.from_pretrained('Helsinki-NLP/opus-mt-es-de')  
+model_es_de = MarianMTModel.from_pretrained('Helsinki-NLP/opus-mt-es-de')
+
+def traducir(texto,tokenizer,model):
+    inputs = tokenizer(texto,return_tensors="pt")
+    outputs = model.generate(**inputs,max_new_tokens=100)
+    return tokenizer.decode(outputs[0],skip_special_tokens=True)
+    
 while True:
-    text_translate = input('Introduce a text:') 
+    text_translate = input('Introduce a text:').strip()
 
     if text_translate.lower() == 'exit':
         break 
 
     idioma = detect(text_translate)
-
-    if idioma == "es":
-        traduccion = español_ingles(text_translate)[0]('generated_text')
+    #print(idioma)
+ 
+    match idioma:
+        case 'es':
+            traduccion = traducir(text_translate,token_es_en,model_es_en)
+            print(traduccion)
     
-    elif idioma == "en":
-        traduccion = ingles_español(text_translate)[0]('generated_text')  
+
+        case 'en':
+            traduccion = traducir(text_translate,token_en_es,model_en_es)
+            print(traduccion)
+
+        case 'de':
+            traduccion = traducir(text_translate, token_es_de, model_es_de) 
+            print(traduccion)
+
+        case _:
+            print('Idioma no reconocido')  
