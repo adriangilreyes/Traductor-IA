@@ -8,6 +8,10 @@ Español - Inglés
 
 Inglés - Español
 
+Español - Alemán
+
+Alemán - Español
+
 ## Probar el Modelo
 cd traductor_ia
 
