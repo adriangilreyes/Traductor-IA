@@ -21,7 +21,7 @@ cd src
 
 cd models
 
-## Ejecutar el Modelo
+## Ejecutar el Modelo (carpeta Models Transformer.py)
 
-python Transformer.py
+python Transformer.py 
 
