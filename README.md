@@ -21,4 +21,7 @@ cd src
 
 cd models
 
-python Transformer.py -- Ejecución del Modelo
+## Ejecutar el Modelo
+
+python Transformer.py
+
