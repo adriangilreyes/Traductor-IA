@@ -1,5 +1,6 @@
 from transformers import  MarianTokenizer, MarianMTModel 
 from langdetect import detect_langs
+import os
  
 #ESPAÑOL - INGLÉS
 token_es_en = MarianTokenizer.from_pretrained('Helsinki-NLP/opus-mt-es-en')  
@@ -38,21 +39,23 @@ while True:
         idioma = short_words.get(text_translate.lower(),None)
     else:
         idioma = detect_langs(text_translate)
-
  
     match idioma:
         case 'es':
             traduccion = traducir(text_translate,token_es_en,model_es_en) 
-            print(traduccion)
+            print('Idioma detectado:',idioma)
+            print('Traducción:',traduccion)
     
 
         case 'en':
             traduccion = traducir(text_translate,token_en_es,model_en_es)
-            print(traduccion)
+            print('Idioma detectado:',idioma)
+            print('Traducción:',traduccion)
 
         case 'de':
-            traduccion = traducir(text_translate, token_de_es, model_de_es)   
-            print(traduccion) 
+            traduccion = traducir(text_translate, token_de_es, model_de_es)
+            print('Idioma detectado:',idioma)   
+            print('Traducción:',traduccion) 
 
         case _:
-            print('Idioma no reconocido')  
+            print('Idioma no reconocido')   
