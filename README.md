@@ -3,11 +3,11 @@
 Se trata de un modelo Transformer pre-entrenado llamado "MarianMTModel"
 
 Documentation MarianMTModel : https://huggingface.co/docs/transformers/model_doc/marian
+Model Trasformer : https://www.ibm.com/es-es/think/topics/transformer-model
 
 
 ## Traducciones
 Español - Inglés
-
 
 Inglés - Español
 
