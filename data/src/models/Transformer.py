@@ -42,7 +42,7 @@ while True:
  
     match idioma:
         case 'es':
-            traduccion = traducir(text_translate,token_es_en,model_es_en) 
+            traduccion = traducir(text_translate,token_es_en,model_es_en)    
             print('Idioma detectado:',idioma)
             print('Traducción:',traduccion)
     
@@ -58,4 +58,5 @@ while True:
             print('Traducción:',traduccion) 
 
         case _:
-            print('Idioma no reconocido')   
+            print('Idioma no "RECONOCIDO POR EL SISTEMA"') 
+                 
