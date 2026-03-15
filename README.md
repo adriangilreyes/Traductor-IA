@@ -7,6 +7,9 @@ Documentation MarianMTModel : https://huggingface.co/docs/transformers/model_doc
 
 Model Trasformer : https://www.ibm.com/es-es/think/topics/transformer-model
 
+UI : https://www.gradio.app/
+
+
 
 ## Traducciones
 Español - Inglés
