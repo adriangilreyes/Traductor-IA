@@ -2,34 +2,43 @@ import gradio as gr
 import sys
 import os
 
-# Añadimos la ruta donde está Transformer.py
-sys.path.append(os.path.join(os.path.dirname(__file__), "data", "src", "models"))
+# Subimos tres niveles desde models a la raíz del proyecto
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../")))
 
-# Importamos las funciones y modelos
-from Transformer import detectar_idioma, traducir, token_es_en, model_es_en, token_en_es, model_en_es, token_de_es, model_de_es
+from data.src.models.Transformer import traducir, token_es_en, model_es_en, \
+    token_en_es, model_en_es, token_es_de, model_es_de, token_de_es, model_de_es
 
-def traducir_ui(texto):
-    """
-    Detecta el idioma del texto y lo traduce usando los modelos correctos.
-    """
-    idioma = detectar_idioma(texto)  # tu función de detección
-    if idioma == "es":
+# Lista de idiomas y emojis de bandera
+langs = {
+    "Español 🇪🇸": "es",
+    "Inglés 🇬🇧": "en",
+    "Alemán 🇩🇪": "de"
+}
+
+def traducir_ui(texto, src_lang, tgt_lang):
+    # src_lang y tgt_lang serán códigos: 'es', 'en', 'de'
+    
+    if src_lang == "es" and tgt_lang == "en":
         return traducir(texto, token_es_en, model_es_en)
-    elif idioma == "en":
+    elif src_lang == "en" and tgt_lang == "es":
         return traducir(texto, token_en_es, model_en_es)
-    elif idioma == "de":
+    elif src_lang == "es" and tgt_lang == "de":
+        return traducir(texto, token_es_de, model_es_de)
+    elif src_lang == "de" and tgt_lang == "es":
         return traducir(texto, token_de_es, model_de_es)
     else:
-        return 'Idioma no "RECONOCIDO POR EL SISTEMA"' 
+        return "Traducción no soportada todavía 😅"
 
-# Creamos la interfaz Gradio
 demo = gr.Interface(
-    fn=traducir_ui,
-    inputs="text",
-    outputs="text",
+    fn=traducir_ui, 
+    inputs=[
+        gr.Textbox(label="Introduce texto"),
+        gr.Dropdown(list(langs.keys()), label="Idioma de origen"),
+        gr.Dropdown(list(langs.keys()), label="Idioma destino") 
+    ],
+    outputs=gr.Textbox(label="Traducción"),
     title="Traductor IA",
     description="Traduce entre Español, Inglés y Alemán"
 )
 
-if __name__ == "__main__":
-    demo.launch() 
+demo.launch() 
