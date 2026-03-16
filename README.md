@@ -1,9 +1,5 @@
 "# Traductor-IA" 
 
-![image alt]("C:\Users\Usuario\Downloads\Captura de pantalla 2026-03-16 103442.png")
-
-
-
 ## Models / Documentation
 Se trata de un modelo Transformer pre-entrenado llamado "MarianMTModel"
 
