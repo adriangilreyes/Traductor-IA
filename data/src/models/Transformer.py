@@ -53,7 +53,7 @@ def detectar_idioma(texto):
  
 # 🔹 Bucle principal
 while True:
-    text_translate = input('Introduce a text:').strip()
+    text_translate = input('Introduce a text:').strip() 
     
     if text_translate.lower() == 'exit':
         break
