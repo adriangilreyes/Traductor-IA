@@ -39,18 +39,18 @@ def detectar_idioma(texto):
     
     # Palabras cortas o frases de 1-2 palabras
     if len(texto.split()) <= 2:
-        return short_words.get(texto.lower(), None)
-    
+        idioma = short_words.get(texto.lower(), None)
+    else:
     # Frases más largas: usar langdetect
-    try:
-        langs = detect_langs(texto)
-        if not langs:
+        try:
+            idioma = detect_langs(texto)
+            if not idioma:
+                return None
+            return idioma[0].lang
+        except:
             return None
-        return langs[0].lang
-    except:
-        return None
 
-
+ 
 # 🔹 Bucle principal
 while True:
     text_translate = input('Introduce a text:').strip()

@@ -17,7 +17,12 @@ langs = {
 
 def traducir_ui(texto, src_lang, tgt_lang):
     # src_lang y tgt_lang serán códigos: 'es', 'en', 'de'
-    
+    #print('src_lang --->',src_lang)
+    #print('tgt_lang --->',tgt_lang)
+
+    src_code = langs.get(src_lang)
+    tgt_code = langs.get(tgt_lang)
+
     if src_lang == "es" and tgt_lang == "en":
         return traducir(texto, token_es_en, model_es_en)
     elif src_lang == "en" and tgt_lang == "es":
@@ -32,13 +37,13 @@ def traducir_ui(texto, src_lang, tgt_lang):
 demo = gr.Interface(
     fn=traducir_ui, 
     inputs=[
-        gr.Textbox(label="Introduce texto"),
+        gr.Textbox(label="Introduce texto"), 
         gr.Dropdown(list(langs.keys()), label="Idioma de origen"),
         gr.Dropdown(list(langs.keys()), label="Idioma destino") 
     ],
     outputs=gr.Textbox(label="Traducción"),
     title="Traductor IA",
-    description="Traduce entre Español, Inglés y Alemán"
+    description="Traduce entre Español, Inglés y Alemán" 
 )
-
+ 
 demo.launch() 
