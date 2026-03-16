@@ -45,5 +45,5 @@ demo = gr.Interface(
     title="Traductor IA",
     description="Traduce entre Español, Inglés y Alemán" 
 )
- 
+   
 demo.launch() 
