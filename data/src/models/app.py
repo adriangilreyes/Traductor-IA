@@ -41,7 +41,7 @@ demo = gr.Interface(
         gr.Dropdown(list(langs.keys()), label="Idioma de origen"),
         gr.Dropdown(list(langs.keys()), label="Idioma destino") 
     ],
-    outputs=gr.Textbox(label="Traducción"),
+    outputs=gr.Textbox(label="Traducción"), 
     title="Traductor IA",
     description="Traduce entre Español, Inglés y Alemán" 
 )
