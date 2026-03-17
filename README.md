@@ -13,14 +13,76 @@ UI : https://www.gradio.app/
 
 
 ## Traducciones
-Español ![SpainGIF](https://github.com/user-attachments/assets/24df3e5b-c6d5-4396-9582-830b4792255e)
-Inglés ![UnitedKingdomFlagGIF](https://github.com/user-attachments/assets/4f7c2ea7-6d74-4f57-bf1a-91c9b5965231)
 
-Inglés - Español
+                            -- ESPAÑOL - INGLÉS --
 
-Español - Alemán
 
-Alemán - Español
+ ![SpainGIF](https://github.com/user-attachments/assets/24df3e5b-c6d5-4396-9582-830b4792255e)
+
+
+ 
+![UnitedKingdomFlagGIF](https://github.com/user-attachments/assets/4f7c2ea7-6d74-4f57-bf1a-91c9b5965231)
+
+
+
+                              -- INGLÉS - ESPAÑOL --
+
+
+![UnitedKingdomFlagGIF](https://github.com/user-attachments/assets/4f7c2ea7-6d74-4f57-bf1a-91c9b5965231)
+
+
+
+
+
+
+
+![SpainGIF](https://github.com/user-attachments/assets/24df3e5b-c6d5-4396-9582-830b4792255e)
+
+
+                                     
+                                   --ESPAÑOL - ALEMÁN--
+
+
+![SpainGIF](https://github.com/user-attachments/assets/24df3e5b-c6d5-4396-9582-830b4792255e)
+
+
+
+
+
+
+
+
+![GermanyFlagGIF](https://github.com/user-attachments/assets/70c596e7-bf1c-4c1c-b6b7-f042a3aa290e)
+
+ 
+
+
+
+
+
+
+
+                                        --ALEMÁN - ESPAÑOL--
+
+
+
+
+![GermanyFlagGIF](https://github.com/user-attachments/assets/70c596e7-bf1c-4c1c-b6b7-f042a3aa290e)
+
+
+
+
+
+
+
+
+
+
+![SpainGIF](https://github.com/user-attachments/assets/24df3e5b-c6d5-4396-9582-830b4792255e)
+
+  
+
+
 
 ## Probar el Modelo
 cd traductor_ia
