@@ -93,10 +93,13 @@ cd src
 
 cd models
 
-## Ejecutar el Modelo (carpeta Models Transformer.py)
+## Ejecutar el Modelo (carpeta Models Transformer.py || app.py)
 
+1º) Opción : 
 python Transformer.py 
 
+2º) Opción recomendable (contiene el main)
+python app.py 
 
 ## Ejecutar en local
  Running on local URL:  http://127.0.0.1:7860
