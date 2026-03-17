@@ -13,7 +13,8 @@ UI : https://www.gradio.app/
 
 
 ## Traducciones
-Español - Inglés
+Español ![SpainGIF](https://github.com/user-attachments/assets/24df3e5b-c6d5-4396-9582-830b4792255e)
+Inglés ![UnitedKingdomFlagGIF](https://github.com/user-attachments/assets/4f7c2ea7-6d74-4f57-bf1a-91c9b5965231)
 
 Inglés - Español
 
