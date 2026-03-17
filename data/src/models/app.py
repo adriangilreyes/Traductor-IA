@@ -2,6 +2,18 @@ import gradio as gr
 import sys
 import os
 
+css = """
+
+body{
+    background-color:#88A479;
+}
+ 
+button{
+    background-color:#278EF5;
+    color:white; 
+}
+"""
+
 # Subimos tres niveles desde models a la raíz del proyecto
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../")))
 
@@ -15,7 +27,7 @@ langs = {
     "Alemán 🇩🇪": "de"
 }
 
-def traducir_ui(texto, src_lang, tgt_lang):
+def traducir_ui(texto, src_lang, tgt_lang): 
     # src_lang y tgt_lang serán códigos: 'es', 'en', 'de'
     #print('src_lang --->',src_lang)
     #print('tgt_lang --->',tgt_lang)
@@ -37,13 +49,14 @@ def traducir_ui(texto, src_lang, tgt_lang):
 demo = gr.Interface(
     fn=traducir_ui, 
     inputs=[
-        gr.Textbox(label="Introduce texto"), 
+        gr.TextArea(label="Introduce texto"), 
         gr.Dropdown(list(langs.keys()), label="Idioma de origen"),
         gr.Dropdown(list(langs.keys()), label="Idioma destino") 
     ],
-    outputs=gr.Textbox(label="Traducción"), 
+    outputs=gr.TextArea(label="Traducción"), 
     title="Traductor IA",
-    description="Traduce entre Español, Inglés y Alemán" 
-)
-   
-demo.launch() 
+    description="Traduce entre Español, Inglés y Alemán", 
+    css = css 
+) 
+    
+demo.launch()   
