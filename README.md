@@ -82,6 +82,50 @@ UI : https://www.gradio.app/
 
   
 
+                                          --ESPAÑOL - FRANCÉS--
+
+
+![SpainGIF](https://github.com/user-attachments/assets/24df3e5b-c6d5-4396-9582-830b4792255e)
+
+
+
+
+
+
+
+
+
+![FranceFlagGifGIF](https://github.com/user-attachments/assets/82622fa0-88c1-4ae4-b73d-e8ed69cd3a5a)
+
+
+
+
+
+                                          --FRANCÉS - ESPAÑOL--
+
+
+![FranceFlagGifGIF](https://github.com/user-attachments/assets/82622fa0-88c1-4ae4-b73d-e8ed69cd3a5a)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+![SpainGIF](https://github.com/user-attachments/assets/24df3e5b-c6d5-4396-9582-830b4792255e)
+
+
+
+
+
+
 
 
 ## Probar el Modelo
