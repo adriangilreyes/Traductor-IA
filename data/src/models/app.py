@@ -5,7 +5,16 @@ import os
 css = """
 
 body{
-    background-color:#88A479;
+    background-color:#D9D1D0 !important;
+}
+
+.gradio-container{
+    background-color:#f7f7f7 !important;
+}
+
+textArea{
+    background-color: #f7f7f7 !important;
+    color:black !important;
 }
  
 button{
@@ -56,6 +65,8 @@ demo = gr.Interface(
     outputs=gr.TextArea(label="Traducción"), 
     title="Traductor IA",
     description="Traduce entre Español, Inglés y Alemán", 
+    live=False,
+    submit_btn="Translate", 
     css = css 
 ) 
     
