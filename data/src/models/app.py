@@ -5,7 +5,7 @@ import os
 css = """
 
 body{
-    background-color:#D9D1D0 !important;
+    background-color:#C5AE59 !important;
 }
 
 .gradio-container{
@@ -43,7 +43,7 @@ def traducir_ui(texto, src_lang, tgt_lang):
     #print('src_lang --->',src_lang)
     #print('tgt_lang --->',tgt_lang)
 
-    src_code = langs.get(src_lang) 
+    src_code = langs.get(src_lang)  
     tgt_code = langs.get(tgt_lang)
 
     if src_code == "es" and tgt_code == "en": # español - inglés
