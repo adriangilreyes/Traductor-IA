@@ -22,6 +22,13 @@ model_es_de = MarianMTModel.from_pretrained('Helsinki-NLP/opus-mt-es-de')
 token_de_es = MarianTokenizer.from_pretrained('Helsinki-NLP/opus-mt-de-es')
 model_de_es = MarianMTModel.from_pretrained('Helsinki-NLP/opus-mt-de-es')
 
+#Español → Francés
+token_es_fr = MarianTokenizer.from_pretrained('Helsinki-NLP/opus-mt-es-fr')
+model_es_fr = MarianMTModel.from_pretrained('Helsinki-NLP/opus-mt-es-fr')
+ 
+#Francés → Español
+token_fr_es = MarianTokenizer.from_pretrained('Helsinki-NLP/opus-mt-fr-es')
+model_fr_es = MarianMTModel.from_pretrained('Helsinki-NLP/opus-mt-fr-es')
 
 # 🔹 Función de traducción
 def traducir(texto, tokenizer, model):
@@ -31,7 +38,7 @@ def traducir(texto, tokenizer, model):
 
 
 # 🔹 Diccionario para palabras cortas
-short_words = {"hola": "es", "hello": "en", "hallo": "de", "adiós": "es", "bye": "en"}
+short_words = {"hola": "es", "hello": "en", "hallo": "de", "adiós": "es", "bye": "en", "bonjour":"fr"}
 
 # 🔹 Función para detectar idioma
 def detectar_idioma(texto):
@@ -67,6 +74,8 @@ while True:
             traduccion = traducir(text_translate, token_en_es, model_en_es)
         case 'de':
             traduccion = traducir(text_translate, token_de_es, model_de_es)
+        case 'fr':
+            traduccion = traducir(text_translate, token_fr_es, model_fr_es)
         case _:
             print('Idioma no "RECONOCIDO POR EL SISTEMA"')
             continue
