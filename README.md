@@ -14,6 +14,7 @@ UI : https://www.gradio.app/
 
 Para añadir cualquier idioma, tendremos que crear un nuevo modelo junto con su token. Creamos un nuevo case con el idioma añadido. fichero (Transformer.py). Finalmente en app.py añadimos una nueva sentencia elif, con el modelo Helsinki y su token, dónde especificamos entrada-sálida del idioma.
 
+*Importante --> importar los modelos de Transformer creado en Transformer.py en app.py
 
 ## Traducciones
 
