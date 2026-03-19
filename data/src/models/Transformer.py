@@ -77,7 +77,7 @@ while True:
         case 'fr':
             traduccion = traducir(text_translate, token_fr_es, model_fr_es)
         case _:
-            print('Idioma no "RECONOCIDO POR EL SISTEMA"')
+            print('Idioma no "RECONOCIDO POR EL SISTEMA"') 
             continue
 
     print('Idioma detectado:', idioma)

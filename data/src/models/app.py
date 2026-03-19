@@ -5,11 +5,11 @@ import os
 css = """
 
 body{
-    background-color:#C5AE59 !important;
+    background-color:#DBD9D9 !important;
 }
 
 .gradio-container{
-    background-color:#f7f7f7 !important;
+    background-color:#DBD9D9 !important;
 }
 
 textArea{
@@ -18,8 +18,9 @@ textArea{
 }
  
 button{
-    background-color:#278EF5;
-    color:white; 
+    background-color:#1e40af !important;
+    color:white !important;
+    border-radius:10px !important; 
 }
 """
 
@@ -32,7 +33,7 @@ from data.src.models.Transformer import traducir, token_es_en, model_es_en, \
 
 # Lista de idiomas y emojis de bandera
 langs = {
-    "Español 🇪🇸": "es",
+    "Español 🇪🇸": "es", 
     "Inglés 🇬🇧": "en",
     "Alemán 🇩🇪": "de",
     "Francés 🇫🇷": "fr"
@@ -76,4 +77,4 @@ demo = gr.Interface(
     css = css 
 ) 
     
-demo.launch()   
+demo.launch()    
