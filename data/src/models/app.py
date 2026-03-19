@@ -5,22 +5,43 @@ import os
 css = """
 
 body{
-    background-color:#DBD9D9 !important;
+    background-color:#DBD9D9 !important; 
 }
 
-.gradio-container{
-    background-color:#DBD9D9 !important;
+.gradio-container{ 
+    background-color:#DBD9D9 !important
+    border-radius:7px !important
+    border: 2px solid black !important;
+    
+    
+.gradio-container{ 
+    background-color:#DBD9D9 !important
+    border-radius:7px solid black !important;
+     
 }
 
 textArea{
     background-color: #f7f7f7 !important;
-    color:black !important;
+    color:black !important
+    border-radius:7px solid black !important; 
+    
+}
+    
+}
+
+textArea{
+    background-color: #f7f7f7 !important;
+    color:black !important
+    border-radius:7px !important
+    border: 2px solid black !important;  
+    
 }
  
 button{
-    background-color:#1e40af !important;
-    color:white !important;
+    background-color:#BA776E !important;
+    color:white !important; 
     border-radius:10px !important; 
+    
 }
 """
 
