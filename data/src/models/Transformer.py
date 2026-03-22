@@ -1,8 +1,9 @@
 from transformers import MarianTokenizer, MarianMTModel
 from langdetect import detect_langs, DetectorFactory
 
+
 # 🔹 Configuración reproducible de langdetect
-DetectorFactory.seed = 0
+DetectorFactory.seed = 0 
 
 # 🔹 Carga de modelos
 
@@ -31,7 +32,7 @@ token_fr_es = MarianTokenizer.from_pretrained('Helsinki-NLP/opus-mt-fr-es')
 model_fr_es = MarianMTModel.from_pretrained('Helsinki-NLP/opus-mt-fr-es')
 
 # 🔹 Función de traducción
-def traducir(texto, tokenizer, model):
+def traducir_texto(texto, tokenizer, model):
     inputs = tokenizer(texto, return_tensors="pt")
     outputs = model.generate(**inputs, max_new_tokens=100)
     return tokenizer.decode(outputs[0], skip_special_tokens=True)
@@ -69,13 +70,13 @@ while True:
 
     match idioma:
         case 'es':
-            traduccion = traducir(text_translate, token_es_en, model_es_en)
+            traduccion = traducir_texto(text_translate, token_es_en, model_es_en)
         case 'en':
-            traduccion = traducir(text_translate, token_en_es, model_en_es)
+            traduccion = traducir_texto(text_translate, token_en_es, model_en_es)
         case 'de':
-            traduccion = traducir(text_translate, token_de_es, model_de_es)
+            traduccion = traducir_texto(text_translate, token_de_es, model_de_es)
         case 'fr':
-            traduccion = traducir(text_translate, token_fr_es, model_fr_es)
+            traduccion = traducir_texto(text_translate, token_fr_es, model_fr_es)
         case _:
             print('Idioma no "RECONOCIDO POR EL SISTEMA"') 
             continue
