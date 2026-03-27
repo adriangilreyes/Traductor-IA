@@ -1,3 +1,3 @@
 '''
-Detectamos 3 idiomas : Inglés, Español , Alemán
-'''
+Detectamos 3 idiomas : Inglés, Español , Alemán, Fránces 
+''' 

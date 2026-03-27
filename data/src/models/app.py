@@ -1,13 +1,15 @@
 import gradio as gr 
 import sys
 import os
-from Transformer import traducir_texto
+from Transformer import traducir_texto 
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../DB")))
+from conexion import obtener_historial, guardar_traduccion
+
 
 # Función para limpiar los textos
-def limpiar_textos(input_text,output_text):
-    input_text.value = ""
-    output_text.value = ""
-    return input_text,output_text
+def limpiar_textos():
+    return "", "" 
 
 css = """
 
@@ -19,7 +21,8 @@ body{
     background-color:#DBD9D9 !important
     border-radius:7px !important
     border: 2px solid black !important;
-    
+
+}    
     
 .gradio-container{ 
     background-color:#DBD9D9 !important
@@ -50,20 +53,16 @@ textArea{
     }  
 }
  
-btn_traducir{ 
-    background-color:#BA776E !important;
-    color:white !important;  
-    border-radius:10px !important
-    width: 50% !important;  
-}
+#btn_traducir, #btn_limpiar {
+    width: 180px !important;
+    border-radius: 10px !important
+    background-color: #866156;  
+}  
 
-btn_limiar{
-    background-color:#BA776E !important;
-    color:white !important;  
-    border-radius:10px !important
-    width: 50% !important;  
+#title_page {
+    position:absolute;
+    right: 150px;
 }
-
 
 """
 
@@ -72,6 +71,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../.
 
 from data.src.models.Transformer import traducir_texto, token_es_en, model_es_en, \
     token_en_es, model_en_es, token_es_de, model_es_de, token_de_es, model_de_es,token_es_fr , model_es_fr, token_fr_es, model_fr_es
+
 
  
 # Lista de idiomas y emojis de bandera
@@ -101,13 +101,18 @@ def traducir_ui(texto, src_lang, tgt_lang):
     elif src_code == "es" and tgt_code == "fr": #español - francés
         return traducir_texto(texto,token_es_fr,model_es_fr)
     elif src_code == "fr" and tgt_code == "es": # francés - español
-        return traducir_texto(texto,token_fr_es, model_fr_es) 
+        return traducir_texto(texto,token_fr_es, model_fr_es)  
     else: 
-        return "Traducción no soportada todavía 😅" 
+        return "Traducción no soportada todavía 😅"  
+
+    #guardamos la traducción en la base de datos
+    guardar_traduccion(texto,traduccion,src_code,tgt_code)
+
+    return traduccion
 
 with gr.Blocks() as demo:
 
-    gr.Markdown("## 🌍 Traductor IA")
+    gr.Markdown("## 🌍 Traductor IA", elem_id="title_page") 
 
     # 🔹 Selectores de idioma
     with gr.Row():
@@ -129,7 +134,7 @@ with gr.Blocks() as demo:
         output_text = gr.TextArea(label="Traducción")
 
     # 🔹 Botón
-    btn_traducir = gr.Button("Traducir 🚀")
+    btn_traducir = gr.Button("Traducir 🚀", elem_id="btn_traducir")
 
     btn_traducir.click(
         traducir_ui,
@@ -137,12 +142,22 @@ with gr.Blocks() as demo:
         outputs=output_text
     )
 
-    btn_limpiar = gr.Button("Limpiar 🧹")
+    btn_limpiar = gr.Button("Limpiar 🧹", elem_id="btn_limpiar")
     btn_limpiar.click(
     limpiar_textos,
-    inputs=[input_text, output_text],
+    inputs=[],
     outputs=[input_text, output_text]
     )
 
+    btn_historial = gr.Button("Historial 🕒")
+    historial_text = gr.TextArea(label="Últimas traducciones",interactive=False, lines=10)
 
-demo.launch()   
+    btn_historial.click(
+    lambda: "\n".join(
+        [f"{t[0]} → {t[1]} ({t[2]}→{t[3]})" for t in obtener_historial()]
+    ) or "No hay traducciones todavía 😅",
+    inputs=[],
+    outputs=historial_text
+) 
+    
+demo.launch()     
