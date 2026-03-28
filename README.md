@@ -141,12 +141,9 @@ cd src
 
 cd models
 
-## Ejecutar el Modelo (carpeta Models Transformer.py || app.py)
+## Ejecutar el Modelo (app.py)
 
-1º) Opción : 
-python Transformer.py 
-
-2º) Opción recomendable (contiene el main)
+1º) Opción recomendable (contiene el main)
 python app.py 
 
 ## Ejecutar en local
