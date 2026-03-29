@@ -1,7 +1,7 @@
 "# Traductor-IA" 
 
 ## Models
-Se trata de un modelo Transformer pre-entrenado llamado "MarianMTModel", junto con la UI hacemos un traudctor estable y escalable
+Se trata de un modelo Transformer pre-entrenado llamado "MarianMTModel", junto con la UI hacemos un traductor estable y escalable
 
 ## Documentation
 
