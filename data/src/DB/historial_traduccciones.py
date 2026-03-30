@@ -8,3 +8,4 @@ CREATE TABLE traducciones(
 ); 
 
 
+ 

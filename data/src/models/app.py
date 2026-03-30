@@ -4,7 +4,7 @@ import os
 from Transformer import traducir_texto 
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../DB")))
-from conexion import obtener_historial, guardar_traduccion
+from conexion import obtener_historial, guardar_traduccion,mostrar_historial
 
 
 # Función para limpiar los textos
@@ -14,8 +14,8 @@ def limpiar_textos():
 css = """
 
 body{ 
-    background-color:#DBD9D9 !important;  
-}
+    background-color:#C9B5B1 !important;  
+} 
 
 .gradio-container{ 
     background-color:#DBD9D9 !important
@@ -73,7 +73,6 @@ from data.src.models.Transformer import traducir_texto, token_es_en, model_es_en
     token_en_es, model_en_es, token_es_de, model_es_de, token_de_es, model_de_es,token_es_fr , model_es_fr, token_fr_es, model_fr_es
 
 
- 
 # Lista de idiomas y emojis de bandera
 langs = {
     "Español 🇪🇸": "es", 
@@ -107,9 +106,10 @@ def traducir_ui(texto, src_lang, tgt_lang):
 
     #guardamos la traducción en la base de datos
     guardar_traduccion(texto,traduccion,src_code,tgt_code)
-
+    print("✔ GUARDADO:", texto, "→", resultado)
+ 
     return traduccion
-
+ 
 with gr.Blocks() as demo:
 
     gr.Markdown("## 🌍 Traductor IA", elem_id="title_page") 
@@ -149,15 +149,13 @@ with gr.Blocks() as demo:
     outputs=[input_text, output_text]
     )
 
-    btn_historial = gr.Button("Historial 🕒")
+    btn_historial = gr.Button("Historial  🕒")
     historial_text = gr.TextArea(label="Últimas traducciones",interactive=False, lines=10)
 
     btn_historial.click(
-    lambda: "\n".join(
-        [f"{t[0]} → {t[1]} ({t[2]}→{t[3]})" for t in obtener_historial()]
-    ) or "No hay traducciones todavía 😅",
-    inputs=[],
-    outputs=historial_text
-) 
+        mostrar_historial,
+        inputs=[],
+        outputs = historial_text
+    )
     
 demo.launch()     

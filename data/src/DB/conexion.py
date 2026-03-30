@@ -8,30 +8,36 @@ with sqlite3.connect(DB_PATH) as conn:
     cursor = conn.cursor()
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS traducciones( 
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            id INTEGER PRIMARY KEY AUTOINCREMENT, 
             texto_original TEXT, 
             traduccion TEXT,
             src_lang TEXT,
             tgt_lang TEXT,
-            fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP 
         )
     ''')
     conn.commit()
 
 def guardar_traduccion(texto, traduccion, src, tgt):
+    import sqlite3
+    from conexion import DB_PATH
+
     with sqlite3.connect(DB_PATH) as conn:
         cursor = conn.cursor()
         cursor.execute('''
-            INSERT INTO traducciones(texto_original, traduccion, src_lang, tgt_lang) 
-            VALUES (?, ?, ?, ?)
-        ''', (texto, traduccion, src, tgt))
-        conn.commit()
+            INSERT INTO traducciones(texto_original, traduccion, src_lang, tgt_lang)
+            VALUES(?,?,?,?)
+        ''',(texto,traduccion,src,tgt))
+        return cursor.fetchall() 
+
+
+
 
 def obtener_historial(limit=10):
     with sqlite3.connect(DB_PATH) as conn:
         cursor = conn.cursor()
         cursor.execute('''
-            SELECT texto_original, traduccion, src_lang, tgt_lang, fecha 
+            SELECT *
             FROM traducciones
             ORDER BY id DESC
             LIMIT ?
@@ -44,9 +50,10 @@ def mostrar_historial():
     if not datos:
         return "No hay traducciones todavía 😅"
     
-    # Construimos el texto
     texto = ""
     for t in datos:
         texto += f"{t[0]} → {t[1]} ({t[2]}→{t[3]})\n"
     
-    return texto
+    print("📁 DB PATH:", DB_PATH)
+
+    return texto 
