@@ -1,14 +1,17 @@
 "# Traductor-IA" 
 
-## Models / Documentation
-Se trata de un modelo Transformer pre-entrenado llamado "MarianMTModel"
+## Models
+Se trata de un modelo Transformer pre-entrenado llamado "MarianMTModel", junto con la UI hacemos un traductor estable y escalable.
+Principalmente hemos escogido tres idiomas predominantes, cómo pueden ser el : Alemán, Inglés, Fránces.
+
+## Documentation
 
 Documentation MarianMTModel : https://huggingface.co/docs/transformers/model_doc/marian
-
 
 Model Trasformer : https://www.ibm.com/es-es/think/topics/transformer-model
 
 UI : https://www.gradio.app/
+
 
 ## Añadir nuevos idiomas
 
@@ -141,12 +144,9 @@ cd src
 
 cd models
 
-## Ejecutar el Modelo (carpeta Models Transformer.py || app.py)
+## Ejecutar el Modelo (app.py)
 
-1º) Opción : 
-python Transformer.py 
-
-2º) Opción recomendable (contiene el main)
+1º) Opción recomendable (contiene el main)
 python app.py 
 
 ## Ejecutar en local
