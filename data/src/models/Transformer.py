@@ -2,7 +2,7 @@ from transformers import MarianTokenizer, MarianMTModel
 from langdetect import detect_langs, DetectorFactory
 
 
-# 🔹 Configuración reproducible de langdetect
+# 🔹 Configuración reproducible de langdetect 
 DetectorFactory.seed = 0 
 
 # 🔹 Carga de modelos
@@ -30,6 +30,8 @@ model_es_fr = MarianMTModel.from_pretrained('Helsinki-NLP/opus-mt-es-fr')
 #Francés → Español
 token_fr_es = MarianTokenizer.from_pretrained('Helsinki-NLP/opus-mt-fr-es')
 model_fr_es = MarianMTModel.from_pretrained('Helsinki-NLP/opus-mt-fr-es')
+
+
 
 # 🔹 Función de traducción
 def traducir_texto(texto, tokenizer, model):

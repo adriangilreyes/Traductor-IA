@@ -11,18 +11,18 @@ def limpiar_textos():
 css = """
 
 body{ 
-    background-color:#C9B5B1 !important;  
-} 
+    background-color:#DECCC8 !important;  
+}  
 
 .gradio-container{ 
-    background-color:#DBD9D9 !important
-    border-radius:7px !important
+    background-color:#DBD9D9 !important;
+    border-radius:7px !important;
     border: 2px solid black !important;
 
 }    
     
 .gradio-container{ 
-    background-color:#DBD9D9 !important
+    background-color:#DBD9D9 !important;
     border-radius:7px solid black !important;
      
 }
@@ -53,13 +53,13 @@ textArea{
 #btn_traducir, #btn_limpiar {
     width: 180px !important;
     border-radius: 10px !important
-    background-color: #866156;  
+    background-color: #276CF5 !important;    
 }  
 
 #title_page {
-    position:absolute !important;
-    right: 150px !important; 
-}
+    text-align: center !important;
+    width: 100% !important;
+} 
 
 """
 
@@ -76,7 +76,7 @@ langs = {
     "Inglés 🇬🇧": "en",
     "Alemán 🇩🇪": "de",
     "Francés 🇫🇷": "fr"
-} 
+}  
 
 def traducir_ui(texto, src_lang, tgt_lang): 
     # src_lang y tgt_lang serán códigos: 'es', 'en', 'de','fr'
@@ -107,8 +107,17 @@ def traducir_ui(texto, src_lang, tgt_lang):
     #print("✔ GUARDADO:", texto, "→", resultado)
  
     return traduccion
- 
-with gr.Blocks() as demo:
+
+# Función para guardar la traducción en la base de datos
+def guardar_traduccion(texto, traduccion, src_code, tgt_code):
+    print('Texto',texto)
+    print('Traducción', traduccion)
+    print('Origen', src_code)
+    print('Destino', tgt_code)
+
+
+
+with gr.Blocks(css=css) as demo:
 
     gr.Markdown("## 🌍 Traductor IA", elem_id="title_page") 
 
@@ -124,7 +133,7 @@ with gr.Blocks() as demo:
             choices=list(langs.keys()),
             label="Destino",
             value="Inglés 🇬🇧"
-        )
+        ) 
 
     # 🔹 Textos
     with gr.Row():
