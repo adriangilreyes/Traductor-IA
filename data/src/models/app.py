@@ -3,9 +3,6 @@ import sys
 import os
 from Transformer import traducir_texto 
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../DB")))
-from conexion import obtener_historial, guardar_traduccion,mostrar_historial
-
 
 # Función para limpiar los textos
 def limpiar_textos():
@@ -60,8 +57,8 @@ textArea{
 }  
 
 #title_page {
-    position:absolute;
-    right: 150px;
+    position:absolute !important;
+    right: 150px !important; 
 }
 
 """
@@ -105,8 +102,9 @@ def traducir_ui(texto, src_lang, tgt_lang):
         return "Traducción no soportada todavía 😅"  
 
     #guardamos la traducción en la base de datos
+    print('Voy a guardar en base de datos')
     guardar_traduccion(texto,traduccion,src_code,tgt_code)
-    print("✔ GUARDADO:", texto, "→", resultado)
+    #print("✔ GUARDADO:", texto, "→", resultado)
  
     return traduccion
  
@@ -149,13 +147,6 @@ with gr.Blocks() as demo:
     outputs=[input_text, output_text]
     )
 
-    btn_historial = gr.Button("Historial  🕒")
-    historial_text = gr.TextArea(label="Últimas traducciones",interactive=False, lines=10)
-
-    btn_historial.click(
-        mostrar_historial,
-        inputs=[],
-        outputs = historial_text
-    )
     
-demo.launch()     
+
+demo.launch(share=True,inbrowser=True)      
