@@ -87,11 +87,11 @@ def traducir_ui(texto, src_lang, tgt_lang):
     tgt_code = langs.get(tgt_lang)
 
     if src_code == "es" and tgt_code == "en": # español - inglés
-        return traducir_texto(texto, token_es_en, model_es_en)
+        return  traducir_texto(texto, token_es_en, model_es_en)
     elif src_code == "en" and tgt_code == "es": # inglés - español
-        return traducir_texto(texto, token_en_es, model_en_es)
+       return traducir_texto(texto, token_en_es, model_en_es)
     elif src_code == "es" and tgt_code == "de": # español - alemán
-        return traducir_texto(texto, token_es_de, model_es_de) 
+       return  traducir_texto(texto, token_es_de, model_es_de) 
     elif src_code == "de" and tgt_code == "es": # alemán - español
         return traducir_texto(texto, token_de_es, model_de_es)
     elif src_code == "es" and tgt_code == "fr": #español - francés
@@ -101,11 +101,8 @@ def traducir_ui(texto, src_lang, tgt_lang):
     else: 
         return "Traducción no soportada todavía 😅"  
 
-    #guardamos la traducción en la base de datos
-    print('Voy a guardar en base de datos')
     guardar_traduccion(texto,traduccion,src_code,tgt_code)
-    #print("✔ GUARDADO:", texto, "→", resultado)
- 
+    #print("✔ GUARDADO:", texto, "→", resultado) 
     return traduccion
 
 # Función para guardar la traducción en la base de datos
@@ -116,6 +113,10 @@ def guardar_traduccion(texto, traduccion, src_code, tgt_code):
     print('Destino', tgt_code)
 
 
+#creamos el historial.txt donde almacenaremos el historial de las traudcciones
+    with open('data/src/DB/historial.txt', "a", encoding='utf-8') as f:
+        f.write(f'{texto} -> {traduccion} -> {src_code} -> {tgt_code}\n')
+    print('Historial guardado en historial.txt')  
 
 with gr.Blocks(css=css) as demo:
 
