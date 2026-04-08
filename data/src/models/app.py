@@ -10,8 +10,8 @@ def limpiar_textos():
 
 css = """
 
-body{ 
-    background-color:#DECCC8 !important;  
+body{   
+    background-color: #F7F5F5 !important;  
 }  
 
 .gradio-container{ 
@@ -102,6 +102,7 @@ def traducir_ui(texto, src_lang, tgt_lang):
         return "Traducción no soportada todavía 😅"  
 
     guardar_traduccion(texto,traduccion,src_code,tgt_code)
+    guardar_fichero_txt() #llamada a la función de guardar historial.txt 
     #print("✔ GUARDADO:", texto, "→", resultado) 
     return traduccion
 
@@ -114,18 +115,19 @@ def guardar_traduccion(texto, traduccion, src_code, tgt_code):
 
 
 #creamos el historial.txt donde almacenaremos el historial de las traudcciones
+def guardar_fichero_txt():
     with open('data/src/DB/historial.txt', "a", encoding='utf-8') as f:
         f.write(f'{texto} -> {traduccion} -> {src_code} -> {tgt_code}\n')
-    print('Historial guardado en historial.txt')  
+    print('Historial guardado en historial.txt✅')   
 
 with gr.Blocks(css=css) as demo:
 
-    gr.Markdown("## 🌍 Traductor IA", elem_id="title_page") 
+    gr.Markdown("## 🌍 Traductor IA", elem_id="title_page")   
 
     # 🔹 Selectores de idioma
     with gr.Row():
         src_lang = gr.Dropdown(
-            choices=list(langs.keys()),
+            choices=list(langs.keys()),  
             label="Origen",
             value="Español 🇪🇸"
         )
