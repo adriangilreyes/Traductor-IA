@@ -1,5 +1,7 @@
 "# Traductor-IA" 
 
+## Mejoras 
+
 ## Models
 Se trata de un modelo Transformer pre-entrenado llamado "MarianMTModel", junto con la UI hacemos un traductor estable y escalable.
 Principalmente hemos escogido tres idiomas predominantes, cómo pueden ser el : Alemán, Inglés, Fránces.
