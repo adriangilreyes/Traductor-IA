@@ -10,10 +10,6 @@ def limpiar_textos():
 
 css = """
 
-body{   
-    background-color: #F7F5F5 !important;  
-}  
-
 .gradio-container{ 
     background-color:#DBD9D9 !important;
     border-radius:7px !important;
@@ -28,17 +24,14 @@ body{
 }
 
 textArea{
-    background-color: #f7f7f7 !important;
-    color:black !important
-    border-radius:7px solid black !important; 
+    background-color: white !important;
+    color:black !important; 
     
 }
 
 textArea{
-    background-color: #f7f7f7 !important;
-    color:black !important
-    border-radius:7px !important
-    border: 2px solid black !important;
+    background-color: white !important;
+    color:black !important; 
     animation: fadeIn 0.5s ease-int-out;
 
     @Keyframes fadeIn {
@@ -53,10 +46,11 @@ textArea{
 #btn_traducir, #btn_limpiar {
     width: 180px !important;
     border-radius: 10px !important
-    background-color: #276CF5 !important;    
+    background-color: # !important;    
 }  
 
 #title_page {
+    font-family:sans-serif !important;  
     text-align: center !important;
     width: 100% !important;
 } 
@@ -101,24 +95,30 @@ def traducir_ui(texto, src_lang, tgt_lang):
     else: 
         return "Traducción no soportada todavía 😅"  
 
-    guardar_traduccion(texto,traduccion,src_code,tgt_code)
-    guardar_fichero_txt() #llamada a la función de guardar historial.txt 
-    #print("✔ GUARDADO:", texto, "→", resultado) 
+        #llamamos a la función
+        guardar_fichero_txt(texto, traduccion, src_code, tgt_code)
+
     return traduccion
 
-# Función para guardar la traducción en la base de datos
-def guardar_traduccion(texto, traduccion, src_code, tgt_code):
-    print('Texto',texto)
-    print('Traducción', traduccion)
-    print('Origen', src_code)
-    print('Destino', tgt_code)
 
 
 #creamos el historial.txt donde almacenaremos el historial de las traudcciones
-def guardar_fichero_txt():
-    with open('data/src/DB/historial.txt', "a", encoding='utf-8') as f:
-        f.write(f'{texto} -> {traduccion} -> {src_code} -> {tgt_code}\n')
-    print('Historial guardado en historial.txt✅')   
+def guardar_fichero_txt(texto, traduccion, src_code, tgt_code):
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    ruta = os.path.join(BASE_DIR, "historial.txt")
+
+    try:
+        print('Ruta txt:',ruta)
+
+        with open(ruta, "a", encoding="utf-8") as f:
+            f.write(f"{texto} -> {traduccion} -> {src_code} -> {tgt_code}\n")
+        
+        print("Guardado correctamente")
+    
+    except Exception as e:
+        print("Error:",e)
+
+
 
 with gr.Blocks(css=css) as demo:
 
