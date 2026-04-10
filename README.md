@@ -1,5 +1,21 @@
 "# Traductor-IA" 
 
+# 🌍 Traductor IA
+
+Aplicación de traducción automática usando modelos Transformer + interfaz en Gradio.
+
+## 🚀 Features
+- Traducción multi-idioma
+- Interfaz gráfica con Gradio
+- Swap de idiomas
+- Historial básico
+- UI personalizada con CSS
+
+## 🛠 Tech
+- Python
+- HuggingFace Transformers
+- Gradio
+
 ## Models
 Se trata de un modelo Transformer pre-entrenado llamado "MarianMTModel", junto con la UI hacemos un traductor estable y escalable.
 Principalmente hemos escogido tres idiomas predominantes, cómo pueden ser el : Alemán, Inglés, Fránces.
