@@ -1,25 +1,23 @@
 "# Traductor-IA" 
 
-# 🌍 Traductor IA
+# 🌍 AI Translator
 
-Aplicación de traducción automática usando modelos Transformer + interfaz en Gradio.
+Automatic translation application using Transformer models + interface in Gradio.
 
 ## 🚀 Features
-- Traducción multi-idioma
-- Interfaz gráfica con Gradio
-- Swap de idiomas
-- Historial básico
-- UI personalizada con CSS
-
+- Multi-language translation
+- Graphical interface with Gradio
+- Language swapping
+- Basic history
+- Custom UI with CSS
 ## 🛠 Tech
 - Python
 - HuggingFace Transformers
 - Gradio
 
 ## Models
-Se trata de un modelo Transformer pre-entrenado llamado "MarianMTModel", junto con la UI hacemos un traductor estable y escalable.
-Principalmente hemos escogido tres idiomas predominantes, cómo pueden ser el : Alemán, Inglés, Fránces.
-
+This is a pre-trained Transformer model called "MarianMTModel," which, together with the UI, creates a stable and scalable translator.
+We have primarily chosen three dominant languages: German, English, and French.
 ## Documentation
 
 Documentation MarianMTModel : https://huggingface.co/docs/transformers/model_doc/marian
@@ -29,17 +27,15 @@ Model Trasformer : https://www.ibm.com/es-es/think/topics/transformer-model
 UI : https://www.gradio.app/ 
 
 
-## Añadir nuevos idiomas
+## Add new language
+To add any language, we'll need to create a new model along with its token. We create a new case with the added language in the file (Transformer.py). Finally, in app.py, we add a new elif statement with the Helsinki model and its token, where we specify the input and output of the language.
 
-Para añadir cualquier idioma, tendremos que crear un nuevo modelo junto con su token. Creamos un nuevo case con el idioma añadido. fichero (Transformer.py). Finalmente en app.py añadimos una nueva sentencia elif, con el modelo Helsinki y su token, dónde especificamos entrada-sálida del idioma.
 
+## Improvements
+* You can add as many languages ​​as you want. A future improvement would be a language interpreter, eliminating the need to add a new model and token for each language.
 
-## Mejoras
-* Se pueden añadir tantos idiomas cómo queramos. La idea a futuro ó posible mejorar es un interprete de idiomas, sin necesida de tener que meter un nuevo modelo y token por idioma.
-
-*Importante --> importar los modelos de Transformer creado en Transformer.py en app.py
-
-## Traducciones
+*Important --> Import the Transformer models created in Transformer.py into app.py
+## Translations
 
                             -- ESPAÑOL - INGLÉS --
 
@@ -155,7 +151,7 @@ Para añadir cualquier idioma, tendremos que crear un nuevo modelo junto con su 
 
 
 
-## Probar el Modelo
+## test the model
 cd traductor_ia
 
 cd data
@@ -164,11 +160,10 @@ cd src
 
 cd models
 
-## Ejecutar el Modelo (app.py)
+## Run the Model (app.py)
+1st) Recommended option (contains the main function)
+python app.py
 
-1º) Opción recomendable (contiene el main)
-python app.py 
-
-## Ejecutar en local
+## Run locally
  Running on local URL:  http://127.0.0.1:7860
  
